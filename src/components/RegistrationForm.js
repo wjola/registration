@@ -1,6 +1,5 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import FormInput from "./FormInput";
-import Button from "./Button";
 import FormInfo from './FormInfo';
 import useValidation from '../hooks/useValidation';
 
@@ -24,6 +23,10 @@ const RegistrationForm = () => {
     e.preventDefault();
     validateForm();
   }
+
+  useEffect(() => {
+    nameRef.current.focus();
+  }, []);
 
   return (
     <form onSubmit={onSubmit}>

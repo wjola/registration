@@ -5,7 +5,6 @@ const NewsletterConsent = ({ isChecked, onChange }) => {
       <input
         type="checkbox"
         id="newsletter"
-        label="Newsletter consent"
         onChange={onChange}
         checked={isChecked}
       />

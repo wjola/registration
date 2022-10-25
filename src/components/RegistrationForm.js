@@ -59,27 +59,30 @@ const RegistrationForm = () => {
 
   return (
     <form onSubmit={onSubmit}>
-      <div>
-        <FormInput ref={nameRef} type="text" id="name" label="Imie" />
-        <FormInput
-          ref={passwordRef}
-          type="password"
-          id="password"
-          label="Haslo"
-        />
-        <NewsletterConsent
-          isChecked={isNewsletterConsent}
-          onChange={onNewsletterConsentChange}
-        />
-      </div>
-      {isNewsletterConsent &&
-        <FormInput
-          ref={emailRef}
-          type="text"
-          id="email"
-          label="Email"
-        />
-      }
+      <fieldset>
+        <legend>Formularz rejestracji</legend>
+        <div>
+          <FormInput ref={nameRef} type="text" id="name" label="Imie" />
+          <FormInput
+            ref={passwordRef}
+            type="password"
+            id="password"
+            label="Haslo"
+          />
+          <NewsletterConsent
+            isChecked={isNewsletterConsent}
+            onChange={onNewsletterConsentChange}
+          />
+        </div>
+        {isNewsletterConsent &&
+          <FormInput
+            ref={emailRef}
+            type="text"
+            id="email"
+            label="Email"
+          />
+        }
+      </fieldset>
       <Button type="submit" text="Zarejestruj" />
       {isValidationSuccessful && <FormInfo message="Pomyślna rejestracja" />}
       {isValidationError && <FormInfo message="Błąd walidacji" />}

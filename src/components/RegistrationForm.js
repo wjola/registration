@@ -59,12 +59,12 @@ const RegistrationForm = () => {
   return (
     <form onSubmit={onSubmit}>
       <div>
-        <FormInput ref={nameRef} type="text" id="name" label="Imię" />
+        <FormInput ref={nameRef} type="text" id="name" label="Imie" />
         <FormInput
           ref={passwordRef}
           type="password"
           id="password"
-          label="Hasło"
+          label="Haslo"
         />
         <NewsletterConsent
           isChecked={isNewsletterConsent}

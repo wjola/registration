@@ -1,5 +1,5 @@
 const FormInfo = ({ message }) => {
-  return <p>{message}</p>
+  return <p data-testid="formInfo">{message}</p>
 }
 
 export default FormInfo;

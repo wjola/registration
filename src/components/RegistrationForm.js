@@ -1,9 +1,12 @@
-import { useRef } from 'react';
+import { useState, useRef } from 'react';
 import FormInput from "./FormInput";
 import Button from "./Button";
+import FormInfo from './FormInfo';
 import useValidation from '../hooks/useValidation';
 
 const RegistrationForm = () => {
+  const [isValidationSuccessful, setIsValidationSuccessful] = useState(false);
+  const [isValidationError, setIsValidationError] = useState(false);
   const nameRef = useRef(null);
   const passwordRef = useRef(null);
   const { isNonEmpty } = useValidation();
@@ -12,12 +15,14 @@ const RegistrationForm = () => {
     const name = nameRef.current.value;
     const password = passwordRef.current.value;
     
-    return isNonEmpty(name) && isNonEmpty(password);
+    const validationResult = isNonEmpty(name) && isNonEmpty(password);
+    setIsValidationSuccessful(validationResult);
+    setIsValidationError(!validationResult);
   }
 
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log(validateForm());
+    validateForm();
   }
 
   return (
@@ -32,6 +37,8 @@ const RegistrationForm = () => {
         />
       </div>
       <Button text="Zarejestruj" onClick={onSubmit} />
+      {isValidationSuccessful && <FormInfo message="Pomyślna rejestracja" />}
+      {isValidationError && <FormInfo message="Błąd walidacji" />}
     </form>
   );
 }

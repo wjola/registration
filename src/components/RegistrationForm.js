@@ -1,8 +1,10 @@
+import FormInput from "./FormInput";
+
 const RegistrationForm = () => {
   return (
     <form>
-      <input type="text" id="name" />
-      <input type="password" id="password" />
+      <FormInput type="text" id="name" label="Imię" />
+      <FormInput type="password" id="password" label="Hasło" />
     </form>
   );
 }

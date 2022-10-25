@@ -4,8 +4,9 @@ const useValidation = () => {
   }
 
   const isValidEmail = (email) => {
-    const regexp = /.+@.+\..+/;
-    return regexp.test(email);
+    const atRegexp = /^[^@]*@{1}[^@]*$/;
+    const dotRegexp = /\./;
+    return atRegexp.test(email) && dotRegexp.test(email);
   }
   return { isNonEmpty, isValidEmail };
 }

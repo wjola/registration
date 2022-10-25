@@ -74,7 +74,7 @@ const RegistrationForm = () => {
       {isNewsletterConsent &&
         <FormInput
           ref={emailRef}
-          type="email"
+          type="text"
           id="email"
           label="Email"
         />

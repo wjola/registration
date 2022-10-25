@@ -1,20 +1,18 @@
 import { useRef } from 'react';
 import FormInput from "./FormInput";
 import Button from "./Button";
+import useValidation from '../hooks/useValidation';
 
 const RegistrationForm = () => {
   const nameRef = useRef(null);
   const passwordRef = useRef(null);
+  const { isNonEmpty } = useValidation();
 
   const validateForm = () => {
     const name = nameRef.current.value;
     const password = passwordRef.current.value;
     
     return isNonEmpty(name) && isNonEmpty(password);
-  }
-
-  const isNonEmpty = (fieldText) => {
-    return !!fieldText.length;
   }
 
   const onSubmit = (e) => {

@@ -31,9 +31,21 @@ const RegistrationForm = () => {
     setIsNewsletterConsent(prev => !prev);
   }
 
+  const resetFormFields = () => {
+    nameRef.current.value = '';
+    passwordRef.current.value = '';
+    setIsNewsletterConsent(false);
+  }
+
   useEffect(() => {
     nameRef.current.focus();
   }, []);
+
+  useEffect(() => {
+    if (isValidationSuccessful) {
+      resetFormFields();
+    }
+  }, [isValidationSuccessful]);
 
   return (
     <form onSubmit={onSubmit}>

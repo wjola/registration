@@ -26,7 +26,7 @@ const RegistrationForm = () => {
   }
 
   return (
-    <form>
+    <form onSubmit={onSubmit}>
       <div>
         <FormInput ref={nameRef} type="text" id="name" label="Imię" />
         <FormInput
@@ -36,7 +36,7 @@ const RegistrationForm = () => {
           label="Hasło"
         />
       </div>
-      <Button text="Zarejestruj" onClick={onSubmit} />
+      <button type="submit">Zarejestruj</button>
       {isValidationSuccessful && <FormInfo message="Pomyślna rejestracja" />}
       {isValidationError && <FormInfo message="Błąd walidacji" />}
     </form>

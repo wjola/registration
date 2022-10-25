@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from 'react';
 import FormInput from "./FormInput";
 import FormInfo from './FormInfo';
 import NewsletterConsent from './NewsletterConsent';
+import Button from './Button';
 import useValidation from '../hooks/useValidation';
 
 const RegistrationForm = () => {
@@ -79,7 +80,7 @@ const RegistrationForm = () => {
           label="Email"
         />
       }
-      <button type="submit">Zarejestruj</button>
+      <Button type="submit" text="Zarejestruj" />
       {isValidationSuccessful && <FormInfo message="Pomyślna rejestracja" />}
       {isValidationError && <FormInfo message="Błąd walidacji" />}
       

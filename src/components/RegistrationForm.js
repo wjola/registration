@@ -11,15 +11,24 @@ const RegistrationForm = () => {
   const nameRef = useRef(null);
   const passwordRef = useRef(null);
   const emailRef = useRef(null);
-  const { isNonEmpty } = useValidation();
+  const { isNonEmpty, isValidEmail } = useValidation();
 
   const validateForm = () => {
     const name = nameRef.current.value;
     const password = passwordRef.current.value;
     
-    const validationResult = isNonEmpty(name) && isNonEmpty(password);
-    setIsValidationSuccessful(validationResult);
-    setIsValidationError(!validationResult);
+    const mandatoryValidationResult = isNonEmpty(name) && isNonEmpty(password);
+    if (isNewsletterConsent) {
+      const email = emailRef.current.value;
+      const emailValidationResult = isValidEmail(email);
+      const validationResult = mandatoryValidationResult && emailValidationResult;
+      setIsValidationSuccessful(validationResult);
+      setIsValidationError(!validationResult);
+
+      return;
+    }
+    setIsValidationSuccessful(mandatoryValidationResult);
+    setIsValidationError(!mandatoryValidationResult);
   }
 
   const onSubmit = (e) => {
